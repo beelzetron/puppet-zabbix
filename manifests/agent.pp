@@ -264,7 +264,7 @@ class zabbix::agent (
   # can find the ipaddress of this specific interface if listenip
   # is set to for example "eth1" or "bond0.73".
   if ($listenip != undef) {
-    if ($listenip =~ /^(eth|bond|lxc|eno|tap|tun).*/) {
+    if ($listenip =~ /^(e|lo|bond|lxc|tap|tun|virbr).*/) {
       $int_name  = getvar("::ipaddress_${listenip}")
     } elsif is_ip_address($listenip) or $listenip == '*' {
       $listen_ip = $listenip
